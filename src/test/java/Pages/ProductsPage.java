@@ -26,25 +26,38 @@ public class ProductsPage extends BasePage {
     @FindBy(xpath = "//a[contains (@href,'https://www.albeena.ro/laptisor-de-matca-pur-crud-2-10-hda-25-gr-8381.html')]")
     private WebElement laptisorDeMatcaElement;
 
+    @FindBy(xpath="//a[contains (@title, 'Morning joy - mix crema miere si laptisor de matca 200 gr')]")
+    private WebElement morningJoyElement;
+
+
     public void adaugaInCosLaptisor() {
         elementMethods.executeScriptOnClick(adaugaInCosLaptisorElement);
     }
 
     public void adaugaInCosTinctura() {
+        elementMethods.scrollByPixel(0, 500);
         elementMethods.executeScriptOnClick(adaugaInCosTincturaElement);
     }
 
     public void adaugaInCosMorningJoy() {
+        elementMethods.scrollByPixel(0, 500);
         elementMethods.executeScriptOnClick(adaugaInCosMorningJoyElement);
     }
 
-
     public void adaugaInCosPastura() {
+        elementMethods.scrollByPixel(0, 500);
         elementMethods.executeScriptOnClick(adaugaInCosPasturaElement);
     }
 
     public void clickLaptisorDeMatca() {
-        elementMethods.clickElement(laptisorDeMatcaElement);
+        elementMethods.scrollByPixel(0, 500);
+        elementMethods.executeScriptOnClick(laptisorDeMatcaElement);
+
     }
+
+    public void clickmorningJoyElement() {
+        elementMethods.clickElement(morningJoyElement);
+    }
+
 
 }

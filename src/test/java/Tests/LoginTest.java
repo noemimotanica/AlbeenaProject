@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Pages.*;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,75 +12,131 @@ public class LoginTest extends SharedData {
 
     @Test
     public void loginTest() {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        WebElement cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
-        cont.click();
+        //JavascriptExecutor executor = (JavascriptExecutor) driver;
+        HomePage homePage = new HomePage(driver);
+        ProductsPage productsPage = new ProductsPage(driver);
+        CartPage cartPage = new CartPage(driver);
+        ProductDetailsPage productDetailsPage = new ProductDetailsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
 
-        executor.executeScript("window.scrollBy(0,500)");
+        // WebElement cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
+        // cont.click();
 
-        WebElement emailElement = driver.findElement(By.cssSelector("input[type='email']"));
-        emailElement.clear();
-
-        WebElement passwordElement = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordElement.clear();
-
-        emailElement.sendKeys("noemi.pohrib@gmail.com");
-        passwordElement.sendKeys("albastru35@");
-
-        WebElement intraInCont = driver.findElement(By.id("Button1"));
-        intraInCont.click();
-
-        WebElement produseElement = driver.findElement(By.xpath("//a[contains(text(), 'Produse')]"));
-        produseElement.click();
-
-        WebElement adaugaInCosLaptisor = driver.findElement(By.xpath("//a[contains(@title,'Adauga in cos Laptisor de matca pur crud 2% 10-HDA 50 gr')]"));
+        homePage.clickMyAccountPage();
 
 
-        executor.executeScript("arguments[0].click();", adaugaInCosLaptisor);
+        //  executor.executeScript("window.scrollBy(0,500)");
 
-        WebElement inapoiElement = driver.findElement(By.xpath("//a[contains(@href, 'https://www.albeena.ro/produse-apicole')]"));
-        inapoiElement.click();
+        //  WebElement emailElement = driver.findElement(By.cssSelector("input[type='email']"));
+        //  emailElement.clear();
 
-        executor.executeScript("window.scrollBy(0,500)");
+        loginPage.clearEmail();
 
-        WebElement adaugaInCosTinctura = driver.findElement(By.xpath("//a[contains(@title, 'Adauga in cos Tinctura de propolis 20 ml')]"));
-        executor.executeScript("arguments[0].click();", adaugaInCosTinctura);
+        //  WebElement passwordElement = driver.findElement(By.cssSelector("input[type='password']"));
+        // passwordElement.clear();
 
-        cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
-        cont.click();
-        executor.executeScript("window.scrollBy(0,500)");
-        WebElement logOut = driver.findElement(By.xpath("//a[contains(text(), 'Logout')]"));
-        logOut.click();
+       loginPage.clearParola();
 
-        cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
-        cont.click();
 
-        executor.executeScript("window.scrollBy(0,500)");
-        emailElement = driver.findElement(By.cssSelector("input[type='email']"));
-        emailElement.clear();
-        passwordElement = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordElement.clear();
+        //  emailElement.sendKeys("noemi.pohrib@gmail.com");
 
-        emailElement.sendKeys("noemi.pohrib@gmail.com");
-        passwordElement.sendKeys("albastru35@");
+        loginPage.fillEmail("noemi.pohrib@gmail.com");
 
-        intraInCont = driver.findElement(By.id("Button1"));
-        intraInCont.click();
+        //  passwordElement.sendKeys("albastru35@");
 
-        WebElement cosDeCumparaturi = driver.findElement(By.xpath("//a[contains(@title, 'Cos de cumparaturi')]"));
-        cosDeCumparaturi.click();
+        loginPage.fillParola("albastru35@");
 
-            /*produseElement.click();
+        //  WebElement intraInCont = driver.findElement(By.id("Button1"));
+        // intraInCont.click();
 
-            executor.executeScript("arguments[0].click();", adaugaInCosTinctura);
+        loginPage.clickIntraInCont();
 
-            inapoiElement = driver.findElement(By.xpath("//a[contains(@href, 'https://www.albeena.ro/produse-apicole')]"));
-            inapoiElement.click();
+        // WebElement produseElement = driver.findElement(By.xpath("//a[contains(text(), 'Produse')]"));
+        // produseElement.click();
 
-            WebElement adaugaInCosMorningJoy = driver.findElement(By.xpath("//a[contains(@title, 'Adauga in cos Morning joy - mix crema miere si laptisor de matca 200 gr')]"));
-            executor.executeScript("arguments[0].click();", adaugaInCosMorningJoy);
+        homePage.goToProductsPage();
 
-             */
+        // WebElement adaugaInCosLaptisor = driver.findElement(By.xpath("//a[contains(@title,'Adauga in cos Laptisor de matca pur crud 2% 10-HDA 50 gr')]"));
+        // executor.executeScript("arguments[0].click();", adaugaInCosLaptisor);
+
+        productsPage.adaugaInCosLaptisor();
+
+        //WebElement inapoiElement = driver.findElement(By.xpath("//a[contains(@href, 'https://www.albeena.ro/produse-apicole')]"));
+        // inapoiElement.click();
+
+        // executor.executeScript("window.scrollBy(0,500)");
+
+        cartPage.clickInapoi();
+
+        // WebElement adaugaInCosTinctura = driver.findElement(By.xpath("//a[contains(@title, 'Adauga in cos Tinctura de propolis 20 ml')]"));
+        // executor.executeScript("arguments[0].click();", adaugaInCosTinctura);
+
+        productsPage.adaugaInCosTinctura();
+
+        // cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
+        // cont.click();
+
+        cartPage.clickMyAccountPage();
+
+        //  executor.executeScript("window.scrollBy(0,500)");
+        //  WebElement logOut = driver.findElement(By.xpath("//a[contains(text(), 'Logout')]"));
+        //  logOut.click();
+
+        loginPage.clickLogOut();
+
+        //  cont = driver.findElement(By.xpath("//a[contains(@title,'Contul meu')]"));
+        //  cont.click();
+
+        loginPage.clickMyAccountPage();
+
+        // executor.executeScript("window.scrollBy(0,500)");
+        //  emailElement = driver.findElement(By.cssSelector("input[type='email']"));
+        // emailElement.clear();
+
+        loginPage.clearEmail();
+
+        // passwordElement = driver.findElement(By.cssSelector("input[type='password']"));
+        // passwordElement.clear();
+
+        loginPage.clearParola();
+
+        //  emailElement.sendKeys("noemi.pohrib@gmail.com");
+
+        loginPage.fillEmail("noemi.pohrib@gmail.com");
+
+        // passwordElement.sendKeys("albastru35@");
+
+        loginPage.fillParola("albastru35@");
+
+        //  intraInCont = driver.findElement(By.id("Button1"));
+        //  intraInCont.click();
+
+        loginPage.clickIntraInCont();
+
+        // WebElement cosDeCumparaturi = driver.findElement(By.xpath("//a[contains(@title, 'Cos de cumparaturi')]"));
+        // cosDeCumparaturi.click();
+
+        loginPage.clickCartPage();
+
+        //  produseElement.click();
+
+        cartPage.goToProductsPage();
+
+        // executor.executeScript("arguments[0].click();", adaugaInCosTinctura);
+
+        productsPage.adaugaInCosTinctura();
+
+        // inapoiElement = driver.findElement(By.xpath("//a[contains(@href, 'https://www.albeena.ro/produse-apicole')]"));
+        //  inapoiElement.click();
+
+        cartPage.clickInapoi();
+
+        //   WebElement adaugaInCosMorningJoy = driver.findElement(By.xpath("//a[contains(@title, 'Adauga in cos Morning joy - mix crema miere si laptisor de matca 200 gr')]"));
+        //    executor.executeScript("arguments[0].click();", adaugaInCosMorningJoy);
+
+        productsPage.adaugaInCosMorningJoy();
+
 
     }
 }
+
