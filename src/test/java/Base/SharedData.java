@@ -1,5 +1,6 @@
 package Base;
 
+import ExtentUtility.ExtentReportTest;
 import PropertyUtility.PropertyFile;
 import org.junit.After;
 import org.junit.Before;
@@ -8,7 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SharedData {
 
-    public WebDriver driver;
+    private WebDriver driver;
+    protected ExtentReportTest report;
 
     @Before
     public void setUp() {
@@ -20,10 +22,16 @@ public class SharedData {
         driver = new ChromeDriver();
         driver.get(driverResource.getValue("url"));
         driver.manage().window().maximize();
-    }
 
+        String testName = this.getClass().getSimpleName();
+        report = new ExtentReportTest(testName + "Report");
+    }
+    public WebDriver getDriver(){
+        return driver;
+    }
     @After
     public void after() {
-        //driver.quit();
+        report.generateReport();
+        driver.quit();
     }
 }

@@ -2,6 +2,7 @@ package Tests;
 
 import Base.SharedData;
 import Pages.*;
+import com.aventstack.extentreports.Status;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,10 +20,10 @@ public class ProductTest extends SharedData {
     @Test
     public void testAutomat() {
         //JavascriptExecutor executor = (JavascriptExecutor) driver;
-        HomePage homePage = new HomePage(driver);
-        ProductsPage productsPage = new ProductsPage(driver);
-        CartPage cartPage = new CartPage(driver);
-        ProductDetailsPage productDetailsPage=new ProductDetailsPage(driver);
+        HomePage homePage = new HomePage(getDriver());
+        ProductsPage productsPage = new ProductsPage(getDriver());
+        CartPage cartPage = new CartPage(getDriver());
+        ProductDetailsPage productDetailsPage=new ProductDetailsPage(getDriver());
 
 
        // WebElement produseElement = driver.findElement(By.xpath("//a[contains(text(), 'Produse')]"));
@@ -38,6 +39,7 @@ public class ProductTest extends SharedData {
          */
 
         productsPage.clickLaptisorDeMatca();
+        report.logger.log(Status.PASS,"Click Laptisor de Matca");
 
         /*executor.executeScript("window.scrollBy(0,500)");
 
@@ -47,6 +49,7 @@ public class ProductTest extends SharedData {
          */
 
         productDetailsPage.clickAdaugaInCos();
+        report.logger.log(Status.PASS,"Click Adauga in Cos");
 
 
        /* executor.executeScript("window.scrollBy(0,500)");
@@ -72,8 +75,11 @@ public class ProductTest extends SharedData {
        // cantitateLaptisorProdus.sendKeys(Keys.ARROW_UP);
        // cantitateLaptisorProdus.sendKeys(Keys.ARROW_UP);
         productDetailsPage.clearCantitateLaptisor();
+        report.logger.log(Status.PASS,"Clear quantity of Laptisor");
         productDetailsPage.fillCantitateLaptisor("3");
+        report.logger.log(Status.PASS,"Fill quantity of Laptisor");
         productDetailsPage.clickArrow(Keys.ARROW_UP);
+        report.logger.log(Status.PASS,"Click Arrow");
 
        //adaugaInCos=driver.findElement(By.xpath("//a[contains (@class, 'btn btn-lg btn-orange')]"));
        //executor.executeScript("arguments[0].click();", adaugaInCos);
@@ -99,6 +105,7 @@ public class ProductTest extends SharedData {
       //  executor.executeScript("arguments[0].click();", morningJoy);
 
         productDetailsPage.clickMorningJoyFromCarousel();
+        report.logger.log(Status.PASS,"Click Morning Joy from Carosel");
 
        // executor.executeScript("window.scrollBy(0,2000)");
 
@@ -107,6 +114,7 @@ public class ProductTest extends SharedData {
       //  executor.executeScript("arguments[0].click();", scrieOParere);
 
         productDetailsPage.clickParere();
+        report.logger.log(Status.PASS,"Click Opinion");
 
         //de facut
         //executor.executeScript("window.scrollBy(0,300)");
@@ -117,6 +125,7 @@ public class ProductTest extends SharedData {
 
         //hover the stars
         productDetailsPage.hoverStar(3);
+        report.logger.log(Status.PASS,"Hover Star");
 //        WebElement star = stars.get(3);
 //        action = new Actions(driver);
 //        action.moveToElement(star).perform();
@@ -128,27 +137,32 @@ public class ProductTest extends SharedData {
        // myRating.click();
 
         productDetailsPage.clickMyRating();
+        report.logger.log(Status.PASS,"Click my Rating");
 
        // WebElement numeleTau = driver.findElement(By.cssSelector("input[placeholder='Numele tau']"));
       //  numeleTau.sendKeys("Noemi");
 
         productDetailsPage.fillNumeleTau("Noemi");
+        report.logger.log(Status.PASS,"Fill name");
 
        // WebElement Titlu = driver.findElement(By.cssSelector("input[placeholder='Titlu']"));
        // Titlu.sendKeys("Cel mai bun produs");
 
         productDetailsPage.fillTitlu("Cel mai bun produs");
+        report.logger.log(Status.PASS,"Fill title");
 
        // WebElement Mesaj = driver.findElement(By.cssSelector("textarea[placeholder='Mesajul']"));
        // Mesaj.sendKeys("Multumita de produs.");
 
         productDetailsPage.fillMesajul("Multumita de produs.");
+        report.logger.log(Status.PASS,"Fill Message");
 
        // WebElement adaugaParerea = driver.findElement(By.cssSelector("input[type='submit']"));
        // new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(adaugaParerea));
       //  adaugaParerea.submit();
 
         productDetailsPage.clickAdaugaParere();
+        report.logger.log(Status.PASS,"Click add opinion");
     }
 
 }
