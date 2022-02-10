@@ -15,9 +15,9 @@ public class ExtentReportTest {
         prepareReport(name);
     }
 
-    public void prepareReport(String name){
-        htmlReporter = new ExtentHtmlReporter("target/Reports/"+ name +".html");
-        extent = new ExtentReports ();
+    public void prepareReport(String name) {
+        htmlReporter = new ExtentHtmlReporter("target/Reports/" + name + ".html");
+        extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("Host Name", "SoftwareTestingMaterial");
         extent.setSystemInfo("Environment", "Albeena Project");
@@ -29,7 +29,7 @@ public class ExtentReportTest {
         logger = extent.createTest(name);
     }
 
-    public void generateReport(){
+    public void generateReport() {
         extent.flush();
     }
 }

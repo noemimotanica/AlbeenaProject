@@ -4,14 +4,8 @@ import Base.SharedData;
 import Pages.CartPage;
 import Pages.HomePage;
 import Pages.ProductsPage;
-import com.aventstack.extentreports.IReport;
 import com.aventstack.extentreports.Status;
-import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
 public class CartTest extends SharedData {
 
@@ -21,8 +15,6 @@ public class CartTest extends SharedData {
         HomePage homePage = new HomePage(getDriver());
         ProductsPage productsPage = new ProductsPage(getDriver());
         CartPage cartPage = new CartPage(getDriver());
-
-
 
        // WebElement produseElement = driver.findElement(By.xpath("//a[contains(text(), 'Produse')]"));
         //produseElement.click();
@@ -51,7 +43,7 @@ public class CartTest extends SharedData {
        // inapoiElement = driver.findElement(By.xpath("//a[contains(@href, 'https://www.albeena.ro/produse-apicole')]"));
        // inapoiElement.click();
         cartPage.clickInapoi();
-        report.logger.log(Status.PASS,"Add on cart Tinctura");
+        report.logger.log(Status.PASS,"Click inapoi");
 
 
         /* executor.executeScript("window.scrollBy(0,500)");
@@ -143,10 +135,7 @@ public class CartTest extends SharedData {
 
       //  Assert.assertEquals(totalValue, subtotalValue);
 
-
     }
-
-
 
         }
 

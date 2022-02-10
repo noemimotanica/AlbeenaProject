@@ -1,15 +1,14 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class ProductDetailsPage extends BasePage {
+
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
 
@@ -24,7 +23,7 @@ public class ProductDetailsPage extends BasePage {
     @FindBy(xpath = "//a[contains (@class, 'btn btn-lg btn-orange')]")
     private WebElement cantitateProdus;
 
-    @FindBy(css="input[name='qty']")
+    @FindBy(css = "input[name='qty']")
     private WebElement cantitateLaptisor;
 
     @FindBy(xpath = "//a[contains (@title, 'Write a review')]")
@@ -101,7 +100,7 @@ public class ProductDetailsPage extends BasePage {
     }
 
     public void hoverStar(int starNumber) {
-        elementMethods.scrollByPixel(0,300);
+        elementMethods.scrollByPixel(0, 300);
         elementMethods.waitElementsVisible(starsElement);
         elementMethods.hoverElement(starsElement.get(starNumber));
     }

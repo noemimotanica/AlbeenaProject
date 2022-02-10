@@ -19,9 +19,6 @@ public class SharedData {
         PropertyFile driverResource = new PropertyFile("DriverResource");
         //specificam unde se afla driverul pt browser
         System.setProperty(driverResource.getValue("driverBrowser"), driverResource.getValue("location"));
-        driver = new EdgeDriver();
-        driver.get(driverResource.getValue("url"));
-        driver.manage().window().maximize();
 
         driver = new ChromeDriver();
         driver.get(driverResource.getValue("url"));
