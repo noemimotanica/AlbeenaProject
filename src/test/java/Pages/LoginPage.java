@@ -17,6 +17,9 @@ public class LoginPage extends BasePage {
     @FindBy(css = "input[type='password']")
     private WebElement parola;
 
+    @FindBy(xpath = "//a[contains(text(), 'Produse')]")
+    private WebElement productsPage;
+
     @FindBy(xpath = "//a[contains(@title,'Contul meu')]")
     private WebElement contulMeu;
 
@@ -61,6 +64,11 @@ public class LoginPage extends BasePage {
     public void clickCartPage() {
         elementMethods.clickElement(cosDeCumparaturi);
     }
+
+    public void goToProductsPage() {
+        elementMethods.clickElement(productsPage);
+    }
+
 
 
 }
